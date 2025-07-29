@@ -2,14 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Gallery from '../components/Gallery.astro';
 import '../styles/global.css';
-
+import logo from '../assets/logo-alexander-light.png';
 ---
 
 <Layout>
   <header class="text-center py-10 flex flex-col items-center gap-2">
     <!-- LOGO CENTRADO -->
     <img 
-      src="../assets/logo-alexander-light.png" 
+     src={logo.src} 
       alt="Logo de la galería" 
       class="w-40  object-contain  "
     />
