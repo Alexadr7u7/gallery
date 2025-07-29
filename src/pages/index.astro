@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.astro';
+import '../styles/global.css';
+
+---
+
+<Layout>
+  <header class="text-center py-10 flex flex-col items-center gap-2">
+    <!-- LOGO CENTRADO -->
+    <img 
+      src="/src/assets/logo-alexander-light.png" 
+      alt="Logo de la galería" 
+      class="w-40  object-contain  "
+    />
+
+    <!-- TÍTULO -->
+    <h1 class="text-6xl font-extrabold text-gray-800 ">
+    Inspirations
+    </h1>
+
+    <!-- DESCRIPCIÓN -->
+    <p class="max-w-xl text-gray-600  text-lg">
+      Bienvenido a mi espacio personal de fotografía, donde comparto paisajes, momentos y detalles visuales que me inspiran.
+    </p>
+  </header>
+<div class="container max-w-6xl mx-auto px-4"><Gallery /></div>
+  
+</Layout>
