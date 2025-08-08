@@ -2,29 +2,72 @@
 import Layout from '../layouts/Layout.astro';
 import Gallery from '../components/Gallery.astro';
 import '../styles/global.css';
-import logo from '../assets/logo-alexander-light.png';
+import logoLight from '../assets/logo-alexander-light.png';
+import logoDark from '../assets/logo-alexander-dark.png';
+
 ---
 
 <Layout>
+  <!-- Botón de modo oscuro en esquina superior derecha -->
+  <div class="absolute top-4 right-4 z-50">
+    <div class="flex gap-2">
+      <!-- Botón modo oscuro -->
+      <button type="button"
+        class="hs-dark-mode-active:hidden block hs-dark-mode font-medium text-gray-800 rounded-full hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+        data-hs-theme-click-value="dark">
+        <span class="group inline-flex shrink-0 justify-center items-center size-9">
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </span>
+      </button>
+
+      <!-- Botón modo claro -->
+      <button type="button"
+        class="hs-dark-mode-active:block hidden hs-dark-mode font-medium text-gray-800 rounded-full hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+        data-hs-theme-click-value="light">
+        <span class="group inline-flex shrink-0 justify-center items-center size-9">
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
   <header class="text-center py-10 flex flex-col items-center gap-2">
-    <!-- LOGO CENTRADO -->
-    <img 
-     src={logo.src} 
-      alt="Logo de la galería" 
-      class="w-40  object-contain  "
+    <img
+      src={logoLight.src} 
+      alt="logo"
+      class="w-40  block dark:hidden"
+    />
+    <img
+      src={logoDark.src} 
+      alt="logo dark"
+      class="w-40  hidden dark:block"
     />
 
-
-    <!-- TÍTULO -->
-    <h1 class="text-6xl font-extrabold text-gray-800 ">
-    Inspirations
+    <h1 class="text-6xl font-extrabold text-gray-800 dark:text-white">
+      Inspirations
     </h1>
 
-    <!-- DESCRIPCIÓN -->
-    <p class="max-w-xl text-gray-600  text-lg">
+    <p class="max-w-xl text-gray-600 dark:text-gray-300 text-lg">
       Bienvenido a mi espacio personal de fotografía, donde comparto paisajes, momentos y detalles visuales que me inspiran.
     </p>
   </header>
-<div class="container max-w-6xl mx-auto px-4"><Gallery /></div>
-  
+
+  <div class="container max-w-7xl mx-auto px-4">
+    <Gallery />
+  </div>
 </Layout>

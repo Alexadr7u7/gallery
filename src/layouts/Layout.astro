@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Galeria</title>
 	</head>
-	<body class="bg-[#EFF2FB]">
+	<body class="bg-[#EFF2FB] dark:bg-[#0E0E16]">
 		<slot />
 	</body>
 </html>
@@ -20,3 +20,53 @@
 		height: 100%;
 	}
 </style>
+<script is:inline>
+(() => {
+  const html = document.documentElement;
+
+  // Leer tema guardado o sistema
+  const savedTheme = localStorage.getItem('hs_theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // Aplica la clase dark o light según el tema
+  if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    html.classList.add('dark');
+  } else {
+    html.classList.remove('dark');
+  }
+
+  // Escuchar clicks en botones que tengan data-hs-theme-click-value
+  document.addEventListener('click', (event) => {
+    const target = event.target.closest('[data-hs-theme-click-value]');
+    if (!target) return;
+
+    const theme = target.getAttribute('data-hs-theme-click-value');
+
+    if (theme === 'dark') {
+      html.classList.add('dark');
+      localStorage.setItem('hs_theme', 'dark');
+    } else if (theme === 'light') {
+      html.classList.remove('dark');
+      localStorage.setItem('hs_theme', 'light');
+    }
+    
+    // Actualiza visibilidad botones (mostrar/ocultar)
+    updateButtonsVisibility();
+  });
+
+  // Función para mostrar/ocultar botones según clase dark
+  function updateButtonsVisibility() {
+    document.querySelectorAll('[data-hs-theme-click-value]').forEach(btn => {
+      const btnTheme = btn.getAttribute('data-hs-theme-click-value');
+      if (btnTheme === 'dark') {
+        btn.style.display = html.classList.contains('dark') ? 'none' : 'inline-block';
+      } else if (btnTheme === 'light') {
+        btn.style.display = html.classList.contains('dark') ? 'inline-block' : 'none';
+      }
+    });
+  }
+
+  // Ejecuta al inicio
+  updateButtonsVisibility();
+})();
+</script>
