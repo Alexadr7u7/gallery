@@ -32,6 +32,17 @@ import {
   imagen30,
   imagen31,
   imagen32,
+  imagen33,
+  imagen34,
+  imagen35,
+  imagen36,
+  imagen37,
+  imagen38,
+  imagen39,
+  imagen40,
+  imagen41,
+  imagen42,
+  imagen43,
 } from "../assets";
 
 export const gallery = [
@@ -68,4 +79,15 @@ export const gallery = [
   { image: imagen30, alt: "Imagen 30" },
   { image: imagen31, alt: "Imagen 31" },
   { image: imagen32, alt: "Imagen 32" },
+  { image: imagen33, alt: "Imagen 33" },
+  { image: imagen34, alt: "Imagen 34" },
+  { image: imagen35, alt: "Imagen 35" },
+  { image: imagen36, alt: "Imagen 36" },
+  { image: imagen37, alt: "Imagen 37" },
+  { image: imagen38, alt: "Imagen 38" },
+  { image: imagen39, alt: "Imagen 39" },
+  { image: imagen40, alt: "Imagen 40" },
+  { image: imagen41, alt: "Imagen 41" },
+  { image: imagen42, alt: "Imagen 42" },
+  { image: imagen43, alt: "Imagen 43" },
 ];

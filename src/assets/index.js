@@ -32,6 +32,17 @@ import imagen29 from "./img/imagen29.jpg";
 import imagen30 from "./img/imagen30.jpg";
 import imagen31 from "./img/imagen31.jpg";
 import imagen32 from "./img/imagen32.jpg";
+import imagen33 from "./img/imagen33.jpg";
+import imagen34 from "./img/imagen34.jpg";
+import imagen35 from "./img/imagen35.jpg";
+import imagen36 from "./img/imagen36.jpg";
+import imagen37 from "./img/imagen37.jpg";
+import imagen38 from "./img/imagen38.jpg";
+import imagen39 from "./img/imagen39.jpg";
+import imagen40 from "./img/imagen40.jpg";
+import imagen41 from "./img/imagen41.jpg";
+import imagen42 from "./img/imagen42.jpg";
+import imagen43 from "./img/imagen43.jpg";
 
 export {
   imagen0,
@@ -67,4 +78,15 @@ export {
   imagen30,
   imagen31,
   imagen32,
+  imagen33,
+  imagen34,
+  imagen35,
+  imagen36,
+  imagen37,
+  imagen38,
+  imagen39,
+  imagen40,
+  imagen41,
+  imagen42,
+  imagen43,
 };
