@@ -1,0 +1,27 @@
+---
+import '../styles/global.css';
+import logoLight from '../assets/logo-alexander-light.png';
+import logoDark from '../assets/logo-alexander-dark.png';
+
+---
+
+ <header class="text-center py-10 flex flex-col items-center gap-2">
+    <img
+      src={logoLight.src} 
+      alt="logo"
+      class="w-40  block dark:hidden"
+    />
+    <img
+      src={logoDark.src} 
+      alt="logo dark"
+      class="w-40  hidden dark:block"
+    />
+
+    <h1 class="text-6xl font-extrabold text-gray-800 dark:text-white">
+      Inspirations
+    </h1>
+
+    <p class="max-w-xl text-gray-600 dark:text-gray-300 text-lg">
+      Bienvenido a mi espacio personal de fotografía, donde comparto paisajes, momentos y detalles visuales que me inspiran.
+    </p>
+  </header>

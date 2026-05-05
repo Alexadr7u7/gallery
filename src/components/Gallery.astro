@@ -1,28 +1,51 @@
 ---
-import { Image } from "astro:assets";
-import { gallery } from "../constants/";
+const imageFiles = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/img/*"
+);
+
+const images = await Promise.all(
+  Object.entries(imageFiles).map(async ([path, loader]) => {
+    const mod = await loader();
+    const filename = path.split("/").pop() ?? "";
+    return {
+      image: mod.default,
+      alt: filename.replace(/\.[^.]+$/, "").replace(/[-_]/g, " "),
+    };
+  })
+);
 ---
+
 <ul
   role="list"
   class="grid-gallery columns-2 sm:columns-3 lg:columns-4 gap-2 [column-fill:_balance] [&>li]:mb-2"
 >
-  {
-    gallery.map((item) => (
-    <li class="flex rounded">
-        <a href={item.image.src} class=" hover:scale-95 transition-transform" data-pswp-width={item.image.width} 
-    data-pswp-height={item.image.height} target="_blank" data-cropped="true" >
-          <Image src={item.image}  class="h-full object-cover" alt={item.alt}   quality={50}  />
-          </a>
-        </li>
-        
-    ))
-  } 
-  
+  {images.map((item) => (
+    <li class="break-inside-avoid mb-2  overflow-hidden">
+      <a
+        href={item.image.src}
+        data-pswp-width={item.image.width}
+        data-pswp-height={item.image.height}
+        target="_blank"
+        data-cropped="true"
+        class="block"
+      >
+        <img
+          src={item.image.src}
+          width={item.image.width}
+          height={item.image.height}
+          class="h-full block object-cover hover:scale-105 transition-transform duration-500 "
+          alt={item.alt}
+          loading="lazy"
+        />
+      </a>
+    </li>
+  ))}
 </ul>
 
 <script>
   import PhotoSwipeLightbox from "photoswipe/lightbox";
   import "photoswipe/style.css";
+
   const lightbox = new PhotoSwipeLightbox({
     gallery: ".grid-gallery",
     children: "a",
